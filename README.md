@@ -10,11 +10,11 @@ Designed and developed by: **James Bustos**
 
 ### Description and Purpose
 
-InstaCV is an innovative AI-powered resume builder designed to revolutionize the way we approach resume creation. By leveraging the power of OpenAI's GPT and Whisper APIs, InstaCV allows users to freely express their experiences, achievements, and aspirations verbally. The platform then interprets, structures, and formats this information into a coherent and professional resume. This fluid and natural approach removes the constraints typically associated with resume writing, offering a more personal and efficient experience.
+InstaCV, an AI-powered resume builder, seeks to reinvent the resume creation process. Using the capabilities of OpenAI's GPT and Whisper APIs, InstaCV offers users the flexibility to either narrate their professional journey or input their experiences manually. In either scenario, the platform employs AI to analyze, structure, and optimize the content into a polished, professional resume tailored to target roles. By providing this dual approach, InstaCV addresses the challenges many face in drafting impactful resumes and ensures a tailored, high-quality output.
 
 ### Inspiration
 
-The inspiration for InstaCV came from the cumbersome and often restrictive nature of traditional resume building. While applying for jobs, the need for constant revisions, formatting, and the limitation on free expression became evident. InstaCV was born out of the desire to simplify this process, providing users with a platform where they can narrate their career journey and have it transformed into a resume that reflects both their professional and personal essence.
+The idea of InstaCV arose from the often tedious and restrictive nature of traditional resume crafting. Recognizing the challenges faced during job applications – from constant revisions to impersonal templates – InstaCV was conceptualized to offer a seamless and personalized resume-building experience. The platform empowers users to convey their career narratives and have them adeptly translated into resumes that encapsulate both their professional caliber and personal nuances.
 
 ## Tech Stack
 
@@ -30,19 +30,21 @@ Utilizing the Whisper API, users can narrate their experiences, roles, and accom
 
 [gif goes here]
 
-### AI-Powered Resume Structuring
+### AI-Powered Resume Structuring and Enhancement
 
-With the GPT API at its core, InstaCV takes the user's verbal input and crafts it into well-structured, professional resume points. Users can also provide context (like the job role they're targeting), enabling the AI to tailor the content more effectively.
+Central to InstaCV is its GPT API-driven feature that takes either verbal or manual input and refines it into structured, professional resume points. To maximize relevance, users can supplement context, such as the targeted job role, empowering the AI to craft tailored content. Furthermore, the platform can intake existing resumes for a deep AI-driven evaluation, leading to precise feedback and enhancement suggestions, all in pursuit of a standout, role-specific resume.
 
 [gif goes here]
 
-### AI-Driven Resume Analysis and Enhancement
-
-InstaCV introduces a comprehensive feature that allows users to input their existing resumes for an in-depth AI-driven analysis. Using the capabilities of the GPT API, the platform will assess the resume content, ask relevant questions to gather more context (if needed), and provide tailored feedback and suggestions. This evaluation ensures users receive helpful recommendations to enhance their resume, making it more compelling and tailored to their desired roles.
-
 ### Job Listing Analyzer and Tailored Suggestions
 
-By pasting a job listing link, InstaCV can scrape the page, extract essential keywords and criteria, and provide suggestions to tailor the user's resume for that specific position. This ensures that each resume is optimized for the intended role, increasing the chances of catching a recruiter's eye.
+By inputting a job listing link, InstaCV delves into the page, distilling vital keywords and requirements. Using this distilled data, it then suggests modifications to align the user's resume with the particular position. This feature ensures resume optimization for the role at hand, elevating its appeal to recruiters.
+
+[gif goes here]
+
+### Multiple Resume Versions and Editing
+
+InstaCV recognizes that one size doesn't fit all when it comes to job applications. Therefore, users have the convenience of saving multiple versions of their resumes on the platform. This feature is particularly beneficial for those applying to diverse roles or industries, as it allows for easy retrieval and modification. Users can revisit and refine their resumes, ensuring each version is tailored and up-to-date for the targeted position.
 
 [gif goes here]
 

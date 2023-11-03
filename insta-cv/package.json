@@ -1,0 +1,17 @@
+{
+  "name": "insta-cv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd client && pnpm run dev",
+    "server": "cd server && pnpm start",
+    "start": "concurrently \"pnpm run server\" \"pnpm run client\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

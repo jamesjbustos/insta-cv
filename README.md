@@ -48,6 +48,12 @@ InstaCV recognizes that one size doesn't fit all when it comes to job applicatio
 
 [gif goes here]
 
+### User Account Creation and Management
+
+InstaCV integrates a streamlined user registration and login system, allowing users to create their own unique accounts. This feature is designed with both convenience and security in mind, enabling users to manage their resumes and preferences with ease.
+
+[gif goes here]
+
 ## Installation Instructions
 
 [instructions go here]

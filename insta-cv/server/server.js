@@ -1,28 +1,22 @@
-import "./config/dotenv.js";
 import express from "express";
+import cors from "cors";
+
 import passport from "passport";
 import session from "express-session";
-import cors from "cors";
-import githubStrategy from "./config/auth.js";
+import { GitHub } from "./config/auth.js";
 import authRoutes from "./routes/auth.js";
 
 const app = express();
 
-// Set up express-session middleware
 app.use(
   session({
-    secret: "codepath",
+    secret: "sq7taigbtwo2brby",
     resave: false,
     saveUninitialized: true,
-    cookie: {
-      // Make sure cookies are only accessible over HTTP and during the session time
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-    },
   })
 );
 
-// CORS middleware settings
+app.use(express.json());
 app.use(
   cors({
     origin: "http://localhost:5173",
@@ -31,30 +25,29 @@ app.use(
   })
 );
 
-// Initialize passport and session support
 app.use(passport.initialize());
 app.use(passport.session());
+passport.use(GitHub);
 
-// Configure passport to use the GitHub strategy
-passport.use(githubStrategy);
-
-// Passport serializeUser function
 passport.serializeUser((user, done) => {
   done(null, user);
 });
 
-// Passport deserializeUser function
 passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
-// Use authRoutes for authentication
+app.get("/", (req, res) => {
+  res.redirect("http://localhost:5173");
+});
+
+// authentication routes
 app.use("/auth", authRoutes);
 
-// API Routes
+// app routes
 
-// Start the server
 const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
 });

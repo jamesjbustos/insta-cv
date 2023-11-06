@@ -1,33 +1,22 @@
-import { useState } from "react";
-
 const Dashboard = () => {
-  const [error, setError] = useState(null);
-
   const logout = async () => {
     try {
       const url = `http://localhost:3000/auth/logout`;
       const response = await fetch(url, { credentials: "include" });
-      const json = await response.json();
-      // Handle logout response
-      if (json.status === "Success") {
-        window.location.href = "/";
-      } else {
-        // If the logout was not successful, set an error message
-        setError("Logout failed. Please try again.");
+      if (!response.ok) {
+        throw new Error("Logout failed with status: " + response.status);
       }
+      window.location.href = "/";
     } catch (error) {
-      // Handle any other errors
-      setError("An error occurred while trying to log out.");
+      console.error("Error during logout:", error);
+      alert("An error occurred during logout. Please try again.");
     }
   };
 
   return (
     <div className="Dashboard">
       <h1>Dashboard</h1>
-      {error && <p className="error">{error}</p>}
-      <button onClick={logout} className="headerBtn">
-        Logout
-      </button>
+      <button onClick={logout}>Logout</button>
     </div>
   );
 };

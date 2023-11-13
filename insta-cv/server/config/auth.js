@@ -1,10 +1,10 @@
-import pool from "../config/database.js";
-import GitHubStrategy from "passport-github2";
+import pool from '../config/database.js';
+import GitHubStrategy from 'passport-github2';
 
 const options = {
   clientID: process.env.GITHUB_CLIENT_ID,
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
-  //callbackURL: 'http://localhost:3000/auth/github/callback'
+  callbackURL: 'http://localhost:3000/auth/github/callback',
 };
 
 const verify = async (accessToken, refreshToken, profile, callback) => {
@@ -21,7 +21,7 @@ const verify = async (accessToken, refreshToken, profile, callback) => {
 
   try {
     const results = await pool.query(
-      "SELECT * FROM users WHERE username = $1",
+      'SELECT * FROM users WHERE username = $1',
       [userData.username]
     );
     const user = results.rows[0];

@@ -4,7 +4,7 @@ import resumesController from '../controllers/resumesController.js';
 const router = express.Router();
 
 // Routes for resume operations
-router.post('/resumes', resumesController.saveResume);
-router.get('/resumes', resumesController.getResumes);
+router.post('/', resumesController.saveResume);
+router.get('/', resumesController.getResumes);
 
 export default router;

@@ -48,8 +48,8 @@ app.get('/', (req, res) => {
 app.use('/auth', authRoutes);
 
 // app routes
-app.use('/api/generate', pdfRoutes);
-app.use('/api/', resumeRoutes);
+app.use('/api/pdf', pdfRoutes);
+app.use('/api/resumes', resumeRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

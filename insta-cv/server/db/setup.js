@@ -36,7 +36,7 @@ const createResumesTable = async () => {
 
 const setup = async () => {
   await createUsersTable();
-  await createResumesTable(); // Ensure this is called after createUsersTable
+  await createResumesTable();
 };
 
 setup().catch(console.error);

@@ -1,4 +1,3 @@
-// routes/pdfRoutes.js
 import express from 'express';
 import resumesController from '../controllers/resumesController.js';
 

@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import InstaCVLogo from '@/icons/InstaCVLogo';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const Home = () => {
   return (
     <div className="flex flex-col min-h-screen">
@@ -12,7 +14,7 @@ const Home = () => {
         <div className="space-x-4">
           <a
             className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-zinc-900 bg-zinc-50 hover:bg-zinc-100 dark:bg-zinc-800 dark:text-zinc-50 dark:hover:bg-zinc-700"
-            href="http://localhost:3000/auth/github"
+            href={`${API_BASE_URL}/auth/github`}
           >
             Sign In
           </a>
@@ -52,21 +54,6 @@ const Home = () => {
                 </Link>
               </div>
             </div>
-          </div>
-        </section>
-        <section className="flex justify-center py-12">
-          <div className="border rounded-lg overflow-hidden shadow-lg max-w-md">
-            {/* <img
-              alt="App Screenshot"
-              className="object-cover w-full h-full"
-              height="400"
-              src="/placeholder.svg"
-              style={{
-                aspectRatio: '400/400',
-                objectFit: 'cover',
-              }}
-              width="400"
-            /> */}
           </div>
         </section>
       </main>

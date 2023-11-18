@@ -14,6 +14,8 @@ import SkillsFormSection from '@/components/SkillsFormSection';
 import ProjectsFormSection from '@/components/ProjectsFormSection';
 import SavedResumes from '@/components/SavedResumes';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const Dashboard = () => {
   useAuth();
   const [formData, setFormData] = useState(initialFormData);
@@ -91,7 +93,7 @@ const Dashboard = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch('http://localhost:3000/api/pdf', {
+      const response = await fetch(`${API_BASE_URL}/api/pdf`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

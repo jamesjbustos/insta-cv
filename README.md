@@ -3,8 +3,8 @@
 CodePath WEB103 Final Project
 
 Designed and developed by: **James Bustos**
-
-🔗 Link to deployed app:
+ 
+🔗 Link to deployed app: [https://wwwinstacv.jamesjbustos.com/ ](https://instacv.jamesjbustos.com/)
 
 ## About
 

@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "proxy": "http://localhost:3000",
   "scripts": {
     "start": "serve build -s -n -L -p $PORT",
     "dev": "vite",

@@ -10,6 +10,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/resume/edit/:resumeId" element={<Dashboard />} />
         </Routes>
       </UserProvider>
     </BrowserRouter>

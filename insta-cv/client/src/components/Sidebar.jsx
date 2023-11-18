@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useUser } from '@/context/userContext';
+import { useUser } from '@/context/UserContext';
 import { logoutUser } from '@/utils/authHelpers';
 import { Button } from '@/components/ui/button';
 

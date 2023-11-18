@@ -32,4 +32,48 @@ const getResumes = async (req, res) => {
   }
 };
 
-export default { saveResume, getResumes };
+// Function to retrieve a specific resume
+const getResume = async (req, res) => {
+  const resumeID = req.params.resumeId; // Get resume ID from the URL parameters
+  const userID = req.user.id; // Get user ID from the authenticated session
+
+  try {
+    const result = await pool.query(
+      'SELECT * FROM resumes WHERE resumeID = $1 AND userID = $2',
+      [resumeID, userID]
+    );
+
+    if (result.rows.length > 0) {
+      res.json({ success: true, resume: result.rows[0] });
+    } else {
+      res.status(404).send('Resume not found');
+    }
+  } catch (error) {
+    console.error('Error fetching resume:', error);
+    res.status(500).send('Error fetching resume');
+  }
+};
+
+// Function to delete a specific resume
+const deleteResume = async (req, res) => {
+  const resumeID = req.params.resumeId; // Get resume ID from URL parameters
+  const userID = req.user.id; // Get user ID from the authenticated session
+
+  try {
+    const result = await pool.query(
+      'DELETE FROM resumes WHERE resumeID = $1 AND userID = $2 RETURNING *',
+      [resumeID, userID]
+    );
+
+    if (result.rows.length > 0) {
+      res.json({ success: true, message: 'Resume deleted successfully' });
+    } else {
+      res.status(404).send('Resume not found or not authorized to delete');
+    }
+  } catch (error) {
+    console.error('Error deleting resume:', error);
+    res.status(500).send('Error deleting resume');
+  }
+};
+
+export default { saveResume, getResumes, getResume, deleteResume };

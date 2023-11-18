@@ -1,30 +1,33 @@
 import { Link } from 'react-router-dom';
 import { useUser } from '@/context/userContext';
+import { logoutUser } from '@/utils/authHelpers';
+import { Button } from '@/components/ui/button';
+
 import InstaCVLogo from '@/icons/InstaCVLogo';
 import PersonIcon from '@/icons/PersonIcon';
 import EducationIcon from '@/icons/EducationIcon';
 import WorkIcon from '@/icons/WorkIcon';
 import SkillsIcon from '@/icons/SkillsIcon';
 import ProjectsIcon from '@/icons/ProjectsIcon';
-import AwardsIcon from '@/icons/AwardsIcon';
 import SavedIcon from '@/icons/SavedIcon';
+import SaveResumeIcon from '@/icons/SaveResumeIcon';
 import LogoutIcon from '@/icons/LogoutIcon';
+import ClearResumeIcon from '@/icons/ClearResumeIcon';
 
-const Sidebar = () => {
+const Sidebar = ({
+  activeSection,
+  onSectionChange,
+  onSaveResume,
+  onClearResume,
+}) => {
   const { user } = useUser();
 
-  const logout = async () => {
-    try {
-      const url = `http://localhost:3000/auth/logout`;
-      const response = await fetch(url, { credentials: 'include' });
-      if (!response.ok) {
-        throw new Error('Logout failed with status: ' + response.status);
-      }
-      window.location.href = '/';
-    } catch (error) {
-      console.error('Error during logout:', error);
-      alert('An error occurred during logout. Please try again.');
-    }
+  const getLinkClass = (section) => {
+    const baseClass =
+      'flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-zinc-900 dark:hover:text-zinc-50';
+    return activeSection === section
+      ? `${baseClass} text-zinc-900 dark:text-zinc-50`
+      : `${baseClass} text-zinc-500 dark:text-zinc-400`;
   };
 
   return (
@@ -38,56 +41,49 @@ const Sidebar = () => {
         </div>
         <div className="flex-1 overflow-auto py-2">
           <nav className="grid items-start px-4 text-sm font-medium">
-            <Link
-              className="flex items-center gap-3 rounded-lg bg-zinc-100 px-3 py-2 text-zinc-900 transition-all hover:text-zinc-900 dark:bg-zinc-800 dark:text-zinc-50 dark:hover:text-zinc-50"
-              href="#"
+            <button
+              className={getLinkClass('basics')}
+              onClick={() => onSectionChange('basics')}
             >
               <PersonIcon />
               Personal Information
-            </Link>
-            <Link
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-zinc-500 transition-all hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
-              href="#"
+            </button>
+            <button
+              className={getLinkClass('education')}
+              onClick={() => onSectionChange('education')}
             >
               <EducationIcon />
               Education
-            </Link>
-            <Link
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-zinc-500 transition-all hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
-              href="#"
+            </button>
+            <button
+              className={getLinkClass('work')}
+              onClick={() => onSectionChange('work')}
             >
               <WorkIcon />
               Work Experience
-            </Link>
-            <Link
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-zinc-500 transition-all hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
-              href="#"
+            </button>
+            <button
+              className={getLinkClass('skills')}
+              onClick={() => onSectionChange('skills')}
             >
               <SkillsIcon />
               Skills
-            </Link>
-            <Link
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-zinc-500 transition-all hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
-              href="#"
+            </button>
+            <button
+              className={getLinkClass('projects')}
+              onClick={() => onSectionChange('projects')}
             >
               <ProjectsIcon />
               Projects
-            </Link>
-            <Link
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-zinc-500 transition-all hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
-              href="#"
-            >
-              <AwardsIcon />
-              Awards
-            </Link>
+            </button>
             <hr className="my-4" />
-            <Link
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-zinc-500 transition-all hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
-              href="#"
+            <button
+              className={getLinkClass('saved')}
+              onClick={() => onSectionChange('saved')}
             >
               <SavedIcon />
               Saved Resumes
-            </Link>
+            </button>
             <hr className="my-4" />
             {user && (
               <div className="flex items-center gap-3 rounded-lg px-3 py-2 text-zinc-900 transition-all hover:text-zinc-900 dark:text-zinc-50 dark:hover:text-zinc-50">
@@ -95,21 +91,35 @@ const Sidebar = () => {
                   alt="User Avatar"
                   className="rounded-full"
                   height="24"
-                  src={user.avatarurl || '/default-avatar.svg'}
+                  src={user.avatarurl || '/placeholder.svg'}
                   style={{
                     aspectRatio: '24/24',
                     objectFit: 'cover',
                   }}
                   width="24"
                 />
-                <Link className="flex-1" to="#">
-                  Account
-                </Link>
-                <Link to="#" onClick={logout}>
+                <button className="flex-1">Account</button>
+                <button onClick={logoutUser}>
                   <LogoutIcon />
-                </Link>
+                </button>
               </div>
             )}
+            <Button
+              className="flex items-center justify-center space-x-2 mt-4"
+              variant="outline"
+              onClick={onSaveResume}
+            >
+              <SaveResumeIcon />
+              <span>Save Resume</span>
+            </Button>
+            <Button
+              className="flex items-center justify-center space-x-2 mt-4"
+              variant="outline"
+              onClick={onClearResume}
+            >
+              <ClearResumeIcon />
+              <span className="text-red-600">Clear Resume</span>
+            </Button>
           </nav>
         </div>
       </div>

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchResumeById, saveResume } from '@/utils/api';
 import initialFormData from '@/data/initialFormData';
-import useAuth from '@/hooks/useAuth';
+// import useAuth from '@/hooks/useAuth';
 
 import { Button } from '@/components/ui/button';
 import Sidebar from '@/components/Sidebar';
@@ -17,7 +17,7 @@ import SavedResumes from '@/components/SavedResumes';
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Dashboard = () => {
-  useAuth();
+  // useAuth();
   const [formData, setFormData] = useState(initialFormData);
   const [pdfUrl, setPdfUrl] = useState(null);
   const [activeSection, setActiveSection] = useState('basics');

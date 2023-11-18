@@ -3,8 +3,8 @@
 CodePath WEB103 Final Project
 
 Designed and developed by: **James Bustos**
-
-🔗 Link to deployed app:
+ 
+🔗 Link to deployed app: [https://wwwinstacv.jamesjbustos.com/ ](https://instacv.jamesjbustos.com/)
 
 ## About
 
@@ -18,11 +18,17 @@ The idea of InstaCV arose from the often tedious and restrictive nature of tradi
 
 ## Tech Stack
 
-Frontend:
+Frontend: React
 
-Backend:
+Backend: Express, Passport
 
 ## Features
+
+### ✅ Resume Builder Interface
+
+Allow the user to create, edit, save, and delete their resume.
+
+https://github.com/jamesjbustos/insta-cv/assets/45052719/98a056a4-7e66-41da-9fbe-b27c82c75972
 
 ### Voice-to-Text Resume Input
 
@@ -52,8 +58,26 @@ InstaCV recognizes that one size doesn't fit all when it comes to job applicatio
 
 InstaCV integrates a streamlined user registration and login system, allowing users to create their own unique accounts. This feature is designed with both convenience and security in mind, enabling users to manage their resumes and preferences with ease.
 
-https://github.com/jamesjbustos/insta-cv/assets/45052719/b45a1da5-de2f-496e-88dc-f3834ece27d0
+https://github.com/jamesjbustos/insta-cv/assets/45052719/6fa0b8d7-9218-4486-b87a-499a84e92ea6
 
 ## Installation Instructions
 
-[instructions go here]
+To install and run InstaCV locally, please follow these steps:
+
+1. Clone the repository to your local machine using the following command:
+   ```
+   git clone https://github.com/jamesjbustos/insta-cv.git
+   ```
+
+2. Navigate to the project server and client directory and install the required dependencies:
+   ```
+   cd client ; npm install
+   ```
+      ```
+   cd server ; npm install
+   ```
+
+3. Go to root directory and run the following:
+   ```
+   npm start
+   ```

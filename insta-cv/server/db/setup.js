@@ -34,9 +34,36 @@ const createResumesTable = async () => {
   console.log('✅ Resumes table created');
 };
 
+const createTagsTable = async () => {
+  const createTableQuery = `
+    DROP TABLE IF EXISTS tags CASCADE;
+    CREATE TABLE IF NOT EXISTS tags (
+      tagID SERIAL PRIMARY KEY,
+      tag_name VARCHAR(255) UNIQUE NOT NULL
+    );
+  `;
+  await pool.query(createTableQuery);
+  console.log('✅ Tags table created');
+};
+
+const createResumeTagsTable = async () => {
+  const createTableQuery = `
+    DROP TABLE IF EXISTS resume_tags CASCADE;
+    CREATE TABLE IF NOT EXISTS resume_tags (
+      resumeID INT REFERENCES resumes(resumeID) ON DELETE CASCADE,
+      tagID INT REFERENCES tags(tagID) ON DELETE CASCADE,
+      PRIMARY KEY (resumeID, tagID)
+    );
+  `;
+  await pool.query(createTableQuery);
+  console.log('✅ Resume Tags table created');
+};
+
 const setup = async () => {
   await createUsersTable();
   await createResumesTable();
+  await createTagsTable();
+  await createResumeTagsTable();
 };
 
 setup().catch(console.error);

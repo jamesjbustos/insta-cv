@@ -8,6 +8,7 @@ import authRoutes from './routes/auth.js';
 
 import pdfRoutes from './routes/pdfRoutes.js';
 import resumeRoutes from './routes/resumeRoutes.js';
+import tagRoutes from './routes/tagRoutes.js';
 
 const app = express();
 
@@ -50,6 +51,7 @@ app.use('/auth', authRoutes);
 // app routes
 app.use('/api/pdf', pdfRoutes);
 app.use('/api/resumes', resumeRoutes);
+app.use('/api/tags', tagRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

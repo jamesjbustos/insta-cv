@@ -24,7 +24,7 @@ Backend: Express, Passport
 
 ## Features
 
-### Resume Builder Interface
+### ✅ Resume Builder Interface
 
 Allow the user to create, edit, save, and delete their resume.
 

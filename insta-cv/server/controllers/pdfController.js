@@ -1,4 +1,3 @@
-// controllers/pdfController.js
 import { createWriteStream } from 'fs';
 import { promises as fsPromises } from 'fs';
 import getTemplateData from '../generator/templates/index.js';

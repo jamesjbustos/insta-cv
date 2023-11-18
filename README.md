@@ -18,9 +18,9 @@ The idea of InstaCV arose from the often tedious and restrictive nature of tradi
 
 ## Tech Stack
 
-Frontend: React, TailwindCSS, Shadcn
+Frontend: **React, TailwindCSS, Shadcn**
 
-Backend: Express, Passport (Github)
+Backend: **Express, Passport (Github)**
 
 ## Features
 

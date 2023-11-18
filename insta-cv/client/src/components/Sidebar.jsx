@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { useUser } from '@/context/UserContext';
 import { logoutUser } from '@/utils/authHelpers';
 import { Button } from '@/components/ui/button';
 
@@ -19,9 +18,8 @@ const Sidebar = ({
   onSectionChange,
   onSaveResume,
   onClearResume,
+  user,
 }) => {
-  const { user } = useUser();
-
   const getLinkClass = (section) => {
     const baseClass =
       'flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-zinc-900 dark:hover:text-zinc-50';

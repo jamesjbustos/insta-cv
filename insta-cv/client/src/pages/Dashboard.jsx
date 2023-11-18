@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchResumeById, saveResume } from '@/utils/api';
 import initialFormData from '@/data/initialFormData';
-import useAuth from '@/hooks/useAuth';
 
 import { Button } from '@/components/ui/button';
 import Sidebar from '@/components/Sidebar';
@@ -17,13 +16,30 @@ import SavedResumes from '@/components/SavedResumes';
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Dashboard = () => {
-  useAuth();
   const [formData, setFormData] = useState(initialFormData);
   const [pdfUrl, setPdfUrl] = useState(null);
   const [activeSection, setActiveSection] = useState('basics');
+  const [user, setUser] = useState(null);
   const { resumeId } = useParams();
 
   useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch(`${API_BASE_URL}/auth/login/success`, {
+          credentials: 'include',
+        });
+        const data = await response.json();
+        if (data.success && data.user) {
+          setUser(data.user);
+        }
+      } catch (error) {
+        console.error('Failed to fetch user data:', error);
+      }
+    };
+
+    fetchUserData();
+
+    // Fetch resume by ID if available
     if (resumeId) {
       fetchResumeById(resumeId)
         .then((data) => {
@@ -175,6 +191,7 @@ const Dashboard = () => {
         onSectionChange={handleSectionChange}
         onSaveResume={handleSaveResume}
         onClearResume={handleClearResume}
+        user={user}
       />
       <div className="flex flex-col overflow-auto">
         <main className="min-h-[calc(100vh_-_theme(spacing.16))] flex-1 p-4 md:p-6">

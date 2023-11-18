@@ -12,6 +12,7 @@ import SavedIcon from '@/icons/SavedIcon';
 import SaveResumeIcon from '@/icons/SaveResumeIcon';
 import LogoutIcon from '@/icons/LogoutIcon';
 import ClearResumeIcon from '@/icons/ClearResumeIcon';
+import DownloadIcon from '@/icons/DownloadIcon';
 
 const Sidebar = ({
   activeSection,
@@ -19,7 +20,20 @@ const Sidebar = ({
   onSaveResume,
   onClearResume,
   user,
+  pdfUrl,
 }) => {
+  // Function to handle PDF download
+  const handleDownloadPdf = () => {
+    if (pdfUrl) {
+      const link = document.createElement('a');
+      link.href = pdfUrl;
+      link.download = 'resume.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+
   const getLinkClass = (section) => {
     const baseClass =
       'flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-zinc-900 dark:hover:text-zinc-50';
@@ -118,6 +132,16 @@ const Sidebar = ({
               <ClearResumeIcon />
               <span className="text-red-600">Clear Resume</span>
             </Button>
+            {pdfUrl && (
+              <Button
+                className="flex items-center justify-center space-x-2 mt-4"
+                variant="outline"
+                onClick={handleDownloadPdf}
+              >
+                <DownloadIcon />
+                <span>Download PDF</span>
+              </Button>
+            )}
           </nav>
         </div>
       </div>

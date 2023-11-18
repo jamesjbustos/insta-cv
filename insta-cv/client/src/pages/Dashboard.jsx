@@ -192,6 +192,7 @@ const Dashboard = () => {
         onSaveResume={handleSaveResume}
         onClearResume={handleClearResume}
         user={user}
+        pdfUrl={pdfUrl}
       />
       <div className="flex flex-col overflow-auto">
         <main className="min-h-[calc(100vh_-_theme(spacing.16))] flex-1 p-4 md:p-6">

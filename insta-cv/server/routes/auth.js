@@ -5,7 +5,7 @@ const router = express.Router();
 
 const CLIENT_URL =
   process.env.NODE_ENV === 'production'
-    ? 'https://instacv.jamesjbustos.com'
+    ? 'https://client-production-9a47.up.railway.app'
     : 'http://localhost:5173';
 
 router.get('/login/success', (req, res) => {

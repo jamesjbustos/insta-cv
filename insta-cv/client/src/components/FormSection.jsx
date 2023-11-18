@@ -6,6 +6,7 @@ export default function FormSection({
   label,
   type = 'text',
   placeholder,
+  value,
   onChange,
 }) {
   return (
@@ -15,6 +16,7 @@ export default function FormSection({
         id={id}
         type={type}
         placeholder={placeholder}
+        value={value}
         onChange={onChange}
       />
     </div>

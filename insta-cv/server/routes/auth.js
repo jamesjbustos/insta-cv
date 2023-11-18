@@ -3,6 +3,11 @@ import passport from 'passport';
 
 const router = express.Router();
 
+const CLIENT_URL =
+  process.env.NODE_ENV === 'production'
+    ? 'https://insta-cv-client.up.railway.app'
+    : 'http://localhost:5173';
+
 router.get('/login/success', (req, res) => {
   if (req.user) {
     res.status(200).json({ success: true, user: req.user });
@@ -38,7 +43,7 @@ router.get(
 router.get(
   '/github/callback',
   passport.authenticate('github', {
-    successRedirect: 'http://localhost:5173/dashboard',
+    successRedirect: `${CLIENT_URL}/dashboard`,
     failureRedirect: '/',
   })
 );

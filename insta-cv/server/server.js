@@ -10,6 +10,11 @@ import pdfRoutes from './routes/pdfRoutes.js';
 import resumeRoutes from './routes/resumeRoutes.js';
 import tagRoutes from './routes/tagRoutes.js';
 
+const CLIENT_URL =
+  process.env.NODE_ENV === 'production'
+    ? 'https://insta-cv-client.up.railway.app'
+    : 'http://localhost:5173';
+
 const app = express();
 
 app.use(
@@ -23,7 +28,7 @@ app.use(
 app.use(express.json());
 app.use(
   cors({
-    origin: 'http://localhost:5173',
+    origin: CLIENT_URL,
     methods: 'GET,POST,PUT,DELETE,PATCH',
     credentials: true,
   })
@@ -42,7 +47,7 @@ passport.deserializeUser((user, done) => {
 });
 
 app.get('/', (req, res) => {
-  res.redirect('http://localhost:5173');
+  res.redirect(CLIENT_URL);
 });
 
 // authentication routes

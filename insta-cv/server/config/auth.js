@@ -6,7 +6,7 @@ const options = {
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
   callbackURL:
     process.env.NODE_ENV === 'production'
-      ? 'https://insta-cv-vdy7.vercel.app'
+      ? 'https://insta-cv-server.up.railway.app/auth/github/callback'
       : 'http://localhost:3000/auth/github/callback',
 };
 

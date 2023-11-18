@@ -24,6 +24,12 @@ Backend: Express, Passport
 
 ## Features
 
+### Resume Builder Interface
+
+Allow the user to create, edit, save, and delete their resume.
+
+https://github.com/jamesjbustos/insta-cv/assets/45052719/98a056a4-7e66-41da-9fbe-b27c82c75972
+
 ### Voice-to-Text Resume Input
 
 Utilizing the Whisper API, users can narrate their experiences, roles, and accomplishments. This feature is perfect for those who prefer speaking over typing, ensuring that no detail is left out in the process.

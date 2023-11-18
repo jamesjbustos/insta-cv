@@ -62,4 +62,22 @@ https://github.com/jamesjbustos/insta-cv/assets/45052719/6fa0b8d7-9218-4486-b87a
 
 ## Installation Instructions
 
-[instructions go here]
+To install and run InstaCV locally, please follow these steps:
+
+1. Clone the repository to your local machine using the following command:
+   ```
+   git clone https://github.com/jamesjbustos/insta-cv.git
+   ```
+
+2. Navigate to the project server and client directory and install the required dependencies:
+   ```
+   cd client ; npm install
+   ```
+      ```
+   cd server ; npm install
+   ```
+
+3. Go to root directory and run the following:
+   ```
+   npm start
+   ```

@@ -1,7 +1,9 @@
 import express from 'express';
 import cors from 'cors';
+import pgSession from 'connect-pg-simple';
 
 import passport from 'passport';
+import pool from './config/database.js';
 import session from 'express-session';
 import { GitHub } from './config/auth.js';
 import authRoutes from './routes/auth.js';
@@ -18,17 +20,24 @@ const CLIENT_URL =
 const corsOptions = {
   origin: CLIENT_URL,
   methods: 'GET,POST,PUT,DELETE,PATCH,OPTIONS',
-  credentials: true, // This is important for cookies
+  credentials: true,
   allowedHeaders: 'Content-Type,Authorization',
 };
 
 const app = express();
 
+const PgStore = pgSession(session);
+
 app.use(
   session({
+    store: new PgStore({
+      pool: pool,
+      tableName: 'session',
+    }),
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
+    cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 }, // 30 days
   })
 );
 

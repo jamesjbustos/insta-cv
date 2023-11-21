@@ -1,17 +1,15 @@
 # Entity Relationship Diagram
 
-Reference the Creating an Entity Relationship Diagram final project guide in the course portal for more information about how to complete this deliverable.
-
 ## Create the List of Tables
 
-[👉🏾👉🏾👉🏾 List each table in your diagram]
+1. `users`
+2. `resumes`
+3. `resume_versions`
+4. `job_listings`
+5. `templates`
+6. `tags`
+7. `resume_tags`
 
 ## Add the Entity Relationship Diagram
 
-[👉🏾👉🏾👉🏾 Include an image or images of the diagram below. You may also wish to use the following markdown syntax to outline each table, as per your preference.]
-
-| Column Name | Type | Description |
-|-------------|------|-------------|
-| id | integer | primary key |
-| name | text | name of the shoe model |
-| ... | ... | ... |
+<img width="1151" alt="InstaCV_ERD" src="https://github.com/jamesjbustos/web103_finalproject/assets/45052719/6a573e51-5c5b-4b88-8334-ddca70367043">

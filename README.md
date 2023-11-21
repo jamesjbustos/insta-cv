@@ -8,7 +8,7 @@
  
 **Link to deployed app:** [https://wwwinstacv.jamesjbustos.com/ ](https://instacv.jamesjbustos.com/)
 
-![resume-ui](https://github.com/jamesjbustos/insta-cv/assets/45052719/38218536-5039-4f2c-9aec-2597a1893f81)
+![resume-ui](https://github.com/jamesjbustos/insta-cv/assets/45052719/8024e2b8-3098-4a83-b8fa-a77ac3e08045)
 
 ## Table of Contents
 

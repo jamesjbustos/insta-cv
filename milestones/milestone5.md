@@ -71,7 +71,7 @@ Complete the checklist below detailing each baseline, custom, and stretch featur
 
 ## Final Demo GIF
 
-https://github.com/jamesjbustos/insta-cv/assets/45052719/50411459-7a56-4432-a02d-5127e1f61e20
+https://github.com/jamesjbustos/insta-cv/assets/45052719/3909a915-8836-4d07-8c46-32a3f4d5c00c
 
 ## Reflection
 

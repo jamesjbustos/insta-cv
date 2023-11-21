@@ -1,10 +1,31 @@
-# AI-Powered Resume Builder – InstaCV
+# InstaCV
 
-CodePath WEB103 Final Project
+> AI Powered Resume Builder
 
-Designed and developed by: **James Bustos**
+## CodePath WEB103 Final Project
+
+**Designed and developed by:** James Bustos
  
-🔗 Link to deployed app: [https://wwwinstacv.jamesjbustos.com/ ](https://instacv.jamesjbustos.com/)
+**Link to deployed app:** [https://wwwinstacv.jamesjbustos.com/ ](https://instacv.jamesjbustos.com/)
+
+![resume-ui](https://github.com/jamesjbustos/insta-cv/assets/45052719/38218536-5039-4f2c-9aec-2597a1893f81)
+
+## Table of Contents
+
+- [About](#about)
+- [Tech Stack](#tech-stack)
+- [Features](#features)
+- [Demos](#demos)
+- [Installation Instructions](#installation-instructions)
+- [Wireframes](#wireframes)
+- [ER Diagram](#er-diagram)
+- [Tables](#tables)
+  - [`users`](#users)
+  - [`resumes`](#resumes)
+  - [`templates`](#templates)
+  - [`tags`](#tags)
+  - [`resume_tags`](#resume_tags)
+- [License](#license)
 
 ## About
 
@@ -18,47 +39,50 @@ The idea of InstaCV arose from the often tedious and restrictive nature of tradi
 
 ## Tech Stack
 
-Frontend: **React, TailwindCSS, Shadcn**
-
-Backend: **Express, Passport (Github)**
+- **Frontend**
+  - **Languages:** JavaScript
+  - **Frameworks:** React.js (Vite)
+  - **UI Components:** ShadCN, TailwindCSS
+  - **Icons:** Lucide Icons
+- **Backend:**
+  - **Languages:** Node.js
+  - **Frameworks:** Express
+  - **Authentication:** Passport, OAuth2
+- **Database:** PostgreSQL
+- **Hosting:** Railway
 
 ## Features
 
-### ✅ Resume Builder Interface
+- **Resume Builder Interface:**
 
-Allow the user to create, edit, save, and delete their resume.
+  - [x] Allow for user input to populate resume.
+  - [x] Generate PDF dynamically with user input
+  - [x] Allow users to download their resume in PDF format.
+  - [x] Add clear resume to button to reset fields
+  
+- **Account management:**
 
-https://github.com/jamesjbustos/insta-cv/assets/45052719/98a056a4-7e66-41da-9fbe-b27c82c75972
+  - [x] Save resumes to your account.
+  - [x] Sign up and sign in with Github.
 
-### Voice-to-Text Resume Input
+- **Resume management:**
 
-Utilizing the Whisper API, users can narrate their experiences, roles, and accomplishments. This feature is perfect for those who prefer speaking over typing, ensuring that no detail is left out in the process.
+  - [x] Create, update, and delete resumes.
+  - [x] Locate saved resumes on your account.
 
-[gif goes here]
+## Demos
 
-### AI-Powered Resume Structuring and Enhancement
+### Resume Builder Interface
 
-Central to InstaCV is its GPT API-driven feature that takes either verbal or manual input and refines it into structured, professional resume points. To maximize relevance, users can supplement context, such as the targeted job role, empowering the AI to craft tailored content. Furthermore, the platform can intake existing resumes for a deep AI-driven evaluation, leading to precise feedback and enhancement suggestions, all in pursuit of a standout, role-specific resume.
+https://github.com/jamesjbustos/insta-cv/assets/45052719/05a7c67c-55b7-47ad-8c0f-7f5e1b455af2
 
-[gif goes here]
+### User Account Creation and Management
 
-### Job Listing Analyzer and Tailored Suggestions
+https://github.com/jamesjbustos/insta-cv/assets/45052719/c73ce3c7-45ca-46bf-bf7a-c1ebb5d7ae41
 
-By inputting a job listing link, InstaCV delves into the page, distilling vital keywords and requirements. Using this distilled data, it then suggests modifications to align the user's resume with the particular position. This feature ensures resume optimization for the role at hand, elevating its appeal to recruiters.
+### Resume management
 
-[gif goes here]
-
-### Multiple Resume Versions and Editing
-
-InstaCV recognizes that one size doesn't fit all when it comes to job applications. Therefore, users have the convenience of saving multiple versions of their resumes on the platform. This feature is particularly beneficial for those applying to diverse roles or industries, as it allows for easy retrieval and modification. Users can revisit and refine their resumes, ensuring each version is tailored and up-to-date for the targeted position.
-
-[gif goes here]
-
-### ✅ User Account Creation and Management
-
-InstaCV integrates a streamlined user registration and login system, allowing users to create their own unique accounts. This feature is designed with both convenience and security in mind, enabling users to manage their resumes and preferences with ease.
-
-https://github.com/jamesjbustos/insta-cv/assets/45052719/6fa0b8d7-9218-4486-b87a-499a84e92ea6
+https://github.com/jamesjbustos/insta-cv/assets/45052719/61e2df9b-6efa-4b56-9656-9324a93b2381
 
 ## Installation Instructions
 
@@ -81,3 +105,78 @@ To install and run InstaCV locally, please follow these steps:
    ```
    npm start
    ```
+
+## ER Diagram
+
+<img width="1066" alt="Screenshot 2023-11-21 at 3 37 37 AM" src="https://github.com/jamesjbustos/insta-cv/assets/45052719/8f74aa8b-3365-41a6-85ae-3824c18397c1">
+
+## Tables
+
+In this schema, we have the following relationships:
+
+1. **One-to-Many Relationship:**
+
+   - **users to resumes:** Each user can have multiple resumes, but each resume is linked to only one user.
+
+2. **Many-to-Many Relationship (Products to Tags):**
+
+   - **resumes to tags:** A resume can have multiple tags, and a tag can be associated with multiple resumes.
+
+### `users`
+| Column            | Type         | Properties                   |
+|-------------------|--------------|------------------------------|
+| id                | int          | pk, increment                |
+| githubid          | varchar      | unique, not null             |
+| username          | varchar      | not null                     |
+| avatarurl         | text         |                              |
+| accesstoken       | text         |                              |
+| registration_date | timestamptz  | default: `now()`             |
+
+### `resumes`
+| Column           | Type        | Properties                  | Indexes |
+|------------------|-------------|-----------------------------|---------|
+| resumeID         | int         | pk, increment               | userID  |
+| userID           | int         | ref: > users.id             |         |
+| creation_date    | datetime    | default: `now()`            |         |
+| content          | text        |                             |         |
+| targeted_role    | varchar     |                             |         |
+| templateID       | int         | ref: > templates.templateID |         |
+| last_modified    | datetime    | default: `now()`            |         |
+
+### `templates`
+| Column       | Type     | Properties                   |
+|--------------|----------|------------------------------|
+| templateID   | int      | pk, increment                |
+| name         | varchar  |                              |
+| design       | varchar  | Refers to LaTeX template files |
+| description  | varchar  |                              |
+
+### `tags`
+| Column    | Type     | Properties             |
+|-----------|----------|------------------------|
+| tagID     | int      | pk, increment          |
+| tag_name  | varchar  |                        |
+
+### `resume_tags`
+| Column    | Type     | Properties              | Indexes         |
+|-----------|----------|-------------------------|-----------------|
+| resumeID  | int      | ref: > resumes.resumeID | (resumeID, tagID) [pk] |
+| tagID     | int      | ref: > tags.tagID       |                 |
+
+## Wireframes
+
+### Homepage
+
+![Homepage](https://github.com/jamesjbustos/web103_finalproject/assets/45052719/cfb1467f-2cbd-4a5d-a05e-f527ae3d4198)
+
+### Dashboard
+
+![Dashboard](https://github.com/jamesjbustos/web103_finalproject/assets/45052719/65562569-7eba-4c2a-8f80-01b2ebffc891)
+
+### Resume Builder
+
+![Resume Builder (1)](https://github.com/jamesjbustos/web103_finalproject/assets/45052719/23f089c7-cfb7-4f81-9a52-35f0665b979b)
+
+## License
+
+This project is licensed under the MIT License
